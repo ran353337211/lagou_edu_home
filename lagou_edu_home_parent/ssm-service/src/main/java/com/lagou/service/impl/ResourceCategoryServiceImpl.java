@@ -1,12 +1,14 @@
 package com.lagou.service.impl;
 
 import com.lagou.dao.ResourceCategoryMapper;
+import com.lagou.domain.Resource;
 import com.lagou.domain.ResourceCategory;
 import com.lagou.domain.User;
 import com.lagou.service.ResourceCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

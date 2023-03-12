@@ -1,10 +1,8 @@
 package com.lagou.controller;
 
-import com.lagou.domain.Menu;
-import com.lagou.domain.ResponseResult;
-import com.lagou.domain.Role;
-import com.lagou.domain.User;
+import com.lagou.domain.*;
 import com.lagou.domain.vo.RoleMenuVo;
+import com.lagou.domain.vo.RoleResourceVo;
 import com.lagou.service.MenuService;
 import com.lagou.service.RoleService;
 import com.lagou.service.UserService;
@@ -73,12 +71,16 @@ public class RoleController {
     @RequestMapping("/RoleContextMenu")
     public ResponseResult roleContextMenu(@RequestBody RoleMenuVo roleMenuVo, HttpServletRequest request) {
 
-        // 获取到操作用户的信息
-        HttpSession session = request.getSession();
-        Integer userId = (Integer) session.getAttribute("user_id");
-        User user = userService.findUserById(userId);
+        User user = getUser(request);
         roleService.roleContextMenu(roleMenuVo,user);
         return new ResponseResult(true,200,"角色分配菜单成功",null);
+    }
+
+    // 获取到操作用户的信息
+    private User getUser(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        Integer userId = (Integer) session.getAttribute("user_id");
+        return userService.findUserById(userId);
     }
 
     /**
@@ -90,4 +92,26 @@ public class RoleController {
         roleService.deleteRole(id);
         return new ResponseResult(true,200,"删除成功",null);
     }
+
+    /**
+     * 获取当前角色拥有的资源信息
+     */
+    @RequestMapping("/findResourceListByRoleId")
+    public ResponseResult findResourceListByRoleId(Integer roleId) {
+
+        List<ResourceCategory> categoryList = roleService.findResourceListByRoleId(roleId);
+        return new ResponseResult(true,200,"响应成功",categoryList);
+    }
+
+    /**
+     * 为角色分配资源
+     */
+    @RequestMapping("/roleContextResource")
+    public ResponseResult roleContextResource(@RequestBody RoleResourceVo roleResourceVo,HttpServletRequest request) {
+
+        User user = getUser(request);
+        roleService.roleContextResource(roleResourceVo,user);
+        return new ResponseResult(true,200,"角色分配资源成功",null);
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.lagou.dao;
 
+import com.lagou.domain.Resource;
 import com.lagou.domain.ResourceCategory;
 
 import java.util.List;

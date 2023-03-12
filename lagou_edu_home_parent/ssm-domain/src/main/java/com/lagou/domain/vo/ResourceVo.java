@@ -7,8 +7,8 @@ package com.lagou.domain.vo;
  */
 public class ResourceVo {
 
-    private Integer currentPage = 1;
-    private Integer pageSize = 10;
+    private Integer currentPage;
+    private Integer pageSize;
     private String name;
     private Integer categoryId;
     private String url;

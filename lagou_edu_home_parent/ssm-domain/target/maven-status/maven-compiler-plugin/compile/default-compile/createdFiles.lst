@@ -1,3 +1,4 @@
+com\lagou\domain\vo\RoleResourceVo.class
 com\lagou\domain\Course.class
 com\lagou\domain\PromotionAd.class
 com\lagou\domain\Teacher.class
@@ -18,4 +19,5 @@ com\lagou\domain\vo\CourseVo.class
 com\lagou\domain\PromotionSpace.class
 com\lagou\domain\CourseMedia.class
 com\lagou\domain\ResourceCategory.class
+com\lagou\domain\Role_Resource_relation.class
 com\lagou\domain\vo\PageVo.class
