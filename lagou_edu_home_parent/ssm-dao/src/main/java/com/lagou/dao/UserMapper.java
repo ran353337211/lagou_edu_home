@@ -39,4 +39,7 @@ public interface UserMapper {
 
     // 4.根据角色id查询对应的资源信息
     List<Resource> findResourceByRoleId(List<Integer> ids);
+
+    // 根据id查询用户信息
+    User findUserById(Integer id);
 }

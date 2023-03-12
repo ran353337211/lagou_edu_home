@@ -8,4 +8,52 @@
         select * from resource_category
     </select>
 
+    <!-- 新增资源分类信息 -->
+    <insert id="saveResourceCategory" parameterType="resourceCategory">
+        insert into resource_category values(null,#{name},#{sort},#{createdTime},#{updatedTime},#{createdBy},#{updatedBy})
+    </insert>
+
+    <!-- 修改资源分类信息 -->
+    <update id="updateResourceCategory" parameterType="resourceCategory">
+        update resource_category
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="null != name and '' != name">
+                name = #{name},
+            </if>
+            <if test="null != sort">
+                sort = #{sort},
+            </if>
+            <if test="null != updatedTime">
+                updated_time = #{updatedTime},
+            </if>
+            <if test="null != updatedBy and '' != updatedBy">
+                updated_by = #{updatedBy},
+            </if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <!-- 1.查询所有相关的资源id集合 -->
+    <select id="findResourceByCategoryId" parameterType="int" resultType="int">
+        select id from resource where category_id = #{categoryId}
+    </select>
+
+    <!-- 2.根据资源id集合删除角色资源关联表中有关资源的信息 -->
+    <delete id="deleteRoleContextResource" parameterType="java.util.List">
+        delete from role_resource_relation where
+        <foreach collection="list" item="item" separator="or">
+            resource_id = #{item}
+        </foreach>
+    </delete>
+
+    <!-- 3.删除资源分类相关的资源信息 -->
+    <delete id="deleteResourceByCategoryId" parameterType="int">
+        delete from resource where category_id = #{categoryId}
+    </delete>
+
+    <!-- 4.删除资源分类 -->
+    <delete id="deleteResourceCategory" parameterType="int">
+        delete from resource_category where id = #{id}
+    </delete>
+
 </mapper>

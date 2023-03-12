@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void userContextRole(UserVo userVo) {
+    public void userContextRole(UserVo userVo,User user) {
 
         Integer userId = userVo.getUserId();
 
@@ -71,8 +71,8 @@ public class UserServiceImpl implements UserService {
         Date date = new Date();
         ur.setCreatedTime(date);
         ur.setUpdatedTime(date);
-        ur.setCreatedBy("system");
-        ur.setUpdatedby("system");
+        ur.setCreatedBy(user.getName());
+        ur.setUpdatedby(user.getName());
         for (Integer roleId : userVo.getRoleIdList()) {
             ur.setRoleId(roleId);
             userMapper.userContextRole(ur);
@@ -107,5 +107,10 @@ public class UserServiceImpl implements UserService {
         map.put("menuList",menuList);
         map.put("resourceList",resourceList);
         return map;
+    }
+
+    @Override
+    public User findUserById(Integer id) {
+        return userMapper.findUserById(id);
     }
 }

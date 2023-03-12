@@ -2,6 +2,7 @@ package com.lagou.service;
 
 import com.lagou.domain.Role;
 import com.lagou.domain.Role_menu_relation;
+import com.lagou.domain.User;
 import com.lagou.domain.vo.RoleMenuVo;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public interface RoleService {
     List<Integer> findMenuByRoleId(Integer roleId);
 
     // 角色菜单关联
-    void roleContextMenu(RoleMenuVo roleMenuVo);
+    void roleContextMenu(RoleMenuVo roleMenuVo, User user);
 
     // 删除角色
     void deleteRole(Integer id);

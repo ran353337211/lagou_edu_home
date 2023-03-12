@@ -3,14 +3,18 @@ package com.lagou.controller;
 import com.lagou.domain.Menu;
 import com.lagou.domain.ResponseResult;
 import com.lagou.domain.Role;
+import com.lagou.domain.User;
 import com.lagou.domain.vo.RoleMenuVo;
 import com.lagou.service.MenuService;
 import com.lagou.service.RoleService;
+import com.lagou.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +33,9 @@ public class RoleController {
 
     @Autowired
     private MenuService menuService;
+
+    @Autowired
+    private UserService userService;
 
     /**
      * 条件查询角色信息
@@ -64,9 +71,13 @@ public class RoleController {
      * 为角色分配菜单
      */
     @RequestMapping("/RoleContextMenu")
-    public ResponseResult roleContextMenu(@RequestBody RoleMenuVo roleMenuVo) {
+    public ResponseResult roleContextMenu(@RequestBody RoleMenuVo roleMenuVo, HttpServletRequest request) {
 
-        roleService.roleContextMenu(roleMenuVo);
+        // 获取到操作用户的信息
+        HttpSession session = request.getSession();
+        Integer userId = (Integer) session.getAttribute("user_id");
+        User user = userService.findUserById(userId);
+        roleService.roleContextMenu(roleMenuVo,user);
         return new ResponseResult(true,200,"角色分配菜单成功",null);
     }
 

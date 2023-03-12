@@ -98,9 +98,13 @@ public class UserController {
      * 分配角色
      */
     @RequestMapping("/userContextRole")
-    public ResponseResult userContextRole(@RequestBody UserVo userVo) {
+    public ResponseResult userContextRole(@RequestBody UserVo userVo,HttpServletRequest request) {
 
-        userService.userContextRole(userVo);
+        // 获取到操作用户的信息
+        HttpSession session = request.getSession();
+        Integer userId = (Integer) session.getAttribute("user_id");
+        User user = userService.findUserById(userId);
+        userService.userContextRole(userVo,user);
         return new ResponseResult(true,200,"角色分配成功",null);
     }
 

@@ -29,8 +29,11 @@ public interface UserService {
     List<Role> findUserRoleByUserId(Integer userId);
 
     // 分配角色
-    void userContextRole(UserVo userVo);
+    void userContextRole(UserVo userVo,User user);
 
     // 获取用户拥有的菜单权限
     Map<String,Object> getUserPermissions(Integer userId);
+
+    // 根据id查询用户信息
+    User findUserById(Integer id);
 }

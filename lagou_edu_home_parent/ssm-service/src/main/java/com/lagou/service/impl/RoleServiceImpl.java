@@ -3,6 +3,7 @@ package com.lagou.service.impl;
 import com.lagou.dao.RoleMapper;
 import com.lagou.domain.Role;
 import com.lagou.domain.Role_menu_relation;
+import com.lagou.domain.User;
 import com.lagou.domain.vo.RoleMenuVo;
 import com.lagou.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public void roleContextMenu(RoleMenuVo roleMenuVo) {
+    public void roleContextMenu(RoleMenuVo roleMenuVo, User user) {
 
         Integer roleId = roleMenuVo.getRoleId();
         // 1.根据roleId删除角色菜单关联信息
@@ -47,8 +48,8 @@ public class RoleServiceImpl implements RoleService {
             rm.setRoleId(roleId);
             rm.setCreatedTime(date);
             rm.setUpdatedTime(date);
-            rm.setCreatedBy("system");
-            rm.setUpdatedby("system");
+            rm.setCreatedBy(user.getName());
+            rm.setUpdatedby(user.getName());
             roleMapper.roleContextMenu(rm);
         }
     }
