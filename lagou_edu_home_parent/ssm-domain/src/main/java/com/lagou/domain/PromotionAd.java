@@ -22,7 +22,6 @@ public class PromotionAd {
     // 链接一
     private String link;
     // 开始时间
-
     private Date startTime;
     // 结束时间
     private Date endTime;

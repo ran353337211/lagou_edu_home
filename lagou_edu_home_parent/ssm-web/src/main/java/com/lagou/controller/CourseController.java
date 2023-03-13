@@ -33,7 +33,7 @@ public class CourseController {
     /**
      * 根据条件查询课程信息
      */
-    @RequestMapping("/findCourseByCondition")
+    @RequestMapping("/findAllCourse")
     public ResponseResult findCourseByCondition(@RequestBody CourseVo courseVo) {
         List<Course> courseList = courseService.findCourseByCondition(courseVo);
         return new ResponseResult(true,200,"响应成功",courseList);

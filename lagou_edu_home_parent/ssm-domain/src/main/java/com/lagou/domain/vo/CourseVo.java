@@ -49,7 +49,7 @@ public class CourseVo {
     private int lastOperatorId;
 
     //是否删除
-    private int isDel;
+    private Integer isDel;
 
     //总时长
     private int totalDuration;
@@ -58,7 +58,7 @@ public class CourseVo {
     private String courseListImg;
 
     //课程状态，0-草稿，1-上架
-    private int status;
+    private Integer status;
 
     //课程排序
     private int sortNum;
@@ -209,11 +209,11 @@ public class CourseVo {
         this.courseListImg = courseListImg;
     }
 
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 

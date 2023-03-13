@@ -44,7 +44,7 @@
         <include refid="lesson_column_list"/>
         FROM course_section cs
         LEFT JOIN course_lesson cl ON cs.id = cl.section_id
-        WHERE cs.course_id = #{courseId} and is_del = 0 ORDER BY cs.order_num
+        WHERE cs.course_id = #{courseId} and cs.is_del = 0 ORDER BY cs.order_num
     </select>
 
     <!-- 根据课程id查询课程信息 -->
