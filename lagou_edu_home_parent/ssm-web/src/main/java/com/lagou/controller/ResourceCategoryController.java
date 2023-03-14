@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -46,9 +45,7 @@ public class ResourceCategoryController {
     public ResponseResult saveOrUpdateResourceCategory(@RequestBody ResourceCategory resourceCategory, HttpServletRequest request) {
 
         // 获取到操作用户的信息
-        HttpSession session = request.getSession();
-        Integer userId = (Integer) session.getAttribute("user_id");
-        User user = userService.findUserById(userId);
+        User user = userService.getUser(request);
         if (null == resourceCategory.getId()) {
             resourceCategoryService.saveResourceCategory(resourceCategory,user);
             return new ResponseResult(true,200,"新增成功",null);

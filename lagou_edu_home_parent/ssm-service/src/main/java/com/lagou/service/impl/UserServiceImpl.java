@@ -10,6 +10,8 @@ import com.lagou.utils.Md5;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.*;
 
 /**
@@ -112,5 +114,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findUserById(Integer id) {
         return userMapper.findUserById(id);
+    }
+
+    // 获取到操作用户的信息
+    @Override
+    public User getUser(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        Integer userId = (Integer) session.getAttribute("user_id");
+        return userMapper.findUserById(userId);
     }
 }

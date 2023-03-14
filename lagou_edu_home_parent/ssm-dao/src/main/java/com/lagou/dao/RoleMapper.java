@@ -38,4 +38,10 @@ public interface RoleMapper {
 
     // 角色资源关联
     void saveRoleContextResource(Role_Resource_relation rr);
+
+    // 修改角色
+    void updateRole(Role role);
+
+    // 新增角色
+    void saveRole(Role role);
 }

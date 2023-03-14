@@ -1,6 +1,7 @@
 package com.lagou.service.impl;
 
 import com.lagou.dao.RoleMapper;
+import com.lagou.dao.UserMapper;
 import com.lagou.domain.*;
 import com.lagou.domain.vo.RoleMenuVo;
 import com.lagou.domain.vo.RoleResourceVo;
@@ -47,8 +48,10 @@ public class RoleServiceImpl implements RoleService {
             rm.setRoleId(roleId);
             rm.setCreatedTime(date);
             rm.setUpdatedTime(date);
-            rm.setCreatedBy(user.getName());
-            rm.setUpdatedby(user.getName());
+//            rm.setCreatedBy(user.getName());
+//            rm.setUpdatedby(user.getName());
+            rm.setCreatedBy("system");
+            rm.setUpdatedby("system");
             for (Integer mid : list) {
                 rm.setMenuId(mid);
                 roleMapper.roleContextMenu(rm);
@@ -99,5 +102,24 @@ public class RoleServiceImpl implements RoleService {
                 roleMapper.saveRoleContextResource(rr);
             }
         }
+    }
+
+    @Override
+    public void updateRole(Role role,User user) {
+
+        role.setUpdatedTime(new Date());
+//        role.setUpdatedBy(user.getName());
+        roleMapper.updateRole(role);
+    }
+
+    @Override
+    public void saveRole(Role role,User user) {
+
+        Date date = new Date();
+        role.setCreatedTime(date);
+        role.setUpdatedTime(date);
+//        role.setCreatedBy(user.getName());
+//        role.setUpdatedBy(user.getName());
+        roleMapper.saveRole(role);
     }
 }

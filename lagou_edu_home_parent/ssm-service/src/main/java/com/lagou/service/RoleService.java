@@ -30,4 +30,10 @@ public interface RoleService {
 
     // 为角色分配资源
     void roleContextResource(RoleResourceVo roleResourceVo, User user);
+
+    // 修改角色
+    void updateRole(Role role,User user);
+
+    // 新增角色
+    void saveRole(Role role,User user);
 }

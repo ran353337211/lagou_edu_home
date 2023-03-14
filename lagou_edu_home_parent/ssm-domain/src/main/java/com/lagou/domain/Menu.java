@@ -15,7 +15,7 @@ public class Menu {
     private Integer id;
 
     //父菜单id
-    private int parentId;
+    private Integer parentId;
 
     //菜单路径
     private String href;
@@ -30,13 +30,13 @@ public class Menu {
     private String description;
 
     //排序号
-    private int orderNum;
+    private Integer orderNum;
 
     //是否展示
-    private int shown;
+    private Integer shown;
 
     //菜单层级，从0开始
-    private int level;
+    private Integer level;
 
     //创建时间
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -71,12 +71,36 @@ public class Menu {
         this.id = id;
     }
 
-    public int getParentId() {
+    public Integer getParentId() {
         return parentId;
     }
 
-    public void setParentId(int parentId) {
+    public void setParentId(Integer parentId) {
         this.parentId = parentId;
+    }
+
+    public Integer getOrderNum() {
+        return orderNum;
+    }
+
+    public void setOrderNum(Integer orderNum) {
+        this.orderNum = orderNum;
+    }
+
+    public Integer getShown() {
+        return shown;
+    }
+
+    public void setShown(Integer shown) {
+        this.shown = shown;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
     }
 
     public String getHref() {
@@ -109,30 +133,6 @@ public class Menu {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public int getOrderNum() {
-        return orderNum;
-    }
-
-    public void setOrderNum(int orderNum) {
-        this.orderNum = orderNum;
-    }
-
-    public int getShown() {
-        return shown;
-    }
-
-    public void setShown(int shown) {
-        this.shown = shown;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
     }
 
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")

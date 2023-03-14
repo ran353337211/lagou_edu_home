@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,16 +70,9 @@ public class RoleController {
     @RequestMapping("/RoleContextMenu")
     public ResponseResult roleContextMenu(@RequestBody RoleMenuVo roleMenuVo, HttpServletRequest request) {
 
-        User user = getUser(request);
+        User user = userService.getUser(request);
         roleService.roleContextMenu(roleMenuVo,user);
         return new ResponseResult(true,200,"角色分配菜单成功",null);
-    }
-
-    // 获取到操作用户的信息
-    private User getUser(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        Integer userId = (Integer) session.getAttribute("user_id");
-        return userService.findUserById(userId);
     }
 
     /**
@@ -109,9 +101,24 @@ public class RoleController {
     @RequestMapping("/roleContextResource")
     public ResponseResult roleContextResource(@RequestBody RoleResourceVo roleResourceVo,HttpServletRequest request) {
 
-        User user = getUser(request);
+        User user = userService.getUser(request);
         roleService.roleContextResource(roleResourceVo,user);
         return new ResponseResult(true,200,"角色分配资源成功",null);
     }
 
+    /**
+     * 新增&修改角色
+     */
+    @RequestMapping("/saveOrUpdateRole")
+    public ResponseResult saveOrUpdateRole(@RequestBody Role role,HttpServletRequest request) {
+
+        User user = userService.getUser(request);
+        if (null != role.getId()) {
+            roleService.updateRole(role,user);
+            return new ResponseResult(true, 200, "修改成功", null);
+        } else {
+            roleService.saveRole(role,user);
+            return new ResponseResult(true, 200, "新增成功", null);
+        }
+    }
 }

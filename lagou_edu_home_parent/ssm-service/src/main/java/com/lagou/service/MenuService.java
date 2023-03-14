@@ -2,6 +2,7 @@ package com.lagou.service;
 
 import com.github.pagehelper.PageInfo;
 import com.lagou.domain.Menu;
+import com.lagou.domain.User;
 import com.lagou.domain.vo.PageVo;
 
 import java.util.List;
@@ -21,4 +22,10 @@ public interface MenuService {
 
     // 根据id查询菜单信息
     Menu findMenuById(Integer id);
+
+    // 修改菜单
+    void updateMenu(Menu menu, User user);
+
+    // 添加菜单
+    void saveMenu(Menu menu, User user);
 }

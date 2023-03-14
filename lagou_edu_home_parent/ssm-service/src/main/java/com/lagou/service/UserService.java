@@ -6,6 +6,7 @@ import com.lagou.domain.Role;
 import com.lagou.domain.User;
 import com.lagou.domain.vo.UserVo;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -36,4 +37,7 @@ public interface UserService {
 
     // 根据id查询用户信息
     User findUserById(Integer id);
+
+    // 获取到操作用户的信息
+    User getUser(HttpServletRequest request);
 }
