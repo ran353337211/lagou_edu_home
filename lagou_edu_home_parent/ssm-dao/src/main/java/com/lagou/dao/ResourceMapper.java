@@ -14,4 +14,10 @@ public interface ResourceMapper {
 
     //  资源信息分页&条件查询
     List<Resource> findAllResource(ResourceVo resourceVo);
+
+    // 修改资源信息
+    void updateResource(Resource resource);
+
+    // 添加资源信息
+    void saveResource(Resource resource);
 }

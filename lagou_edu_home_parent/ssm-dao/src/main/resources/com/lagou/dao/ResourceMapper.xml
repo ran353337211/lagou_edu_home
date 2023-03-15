@@ -19,4 +19,36 @@
             </if>
         </where>
     </select>
+
+    <!-- 修改资源信息 -->
+    <update id="updateResource" parameterType="resource">
+        update resource
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="null != name and '' != name">
+                name = #{name},
+            </if>
+            <if test="null != url and '' != url">
+                url = #{url},
+            </if>
+            <if test="null != categoryId">
+                category_id = #{categoryId},
+            </if>
+            <if test="null != description and '' != description">
+                description = #{description},
+            </if>
+            <if test="null != updatedTime">
+                updated_time = #{updatedTime},
+            </if>
+            <if test="null != updatedBy and '' != updatedBy">
+                updated_by = #{updatedBy},
+            </if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <!-- 添加资源信息 -->
+    <insert id="saveResource" parameterType="resource">
+        insert into resource values(null,#{name},#{url},#{categoryId},#{description},#{createdTime},
+                                    #{updatedTime},#{createdBy},#{updatedBy})
+    </insert>
 </mapper>

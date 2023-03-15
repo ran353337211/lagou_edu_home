@@ -82,4 +82,10 @@ public class MenuController {
     /**
      * 删除菜单及其子菜单，和与角色关联的信息
      */
+    @RequestMapping("/deleteMenu")
+    public ResponseResult deleteMenu(Integer id) {
+
+        menuService.deleteMenu(id);
+        return new ResponseResult(true,200,"删除成功",null);
+    }
 }

@@ -185,11 +185,11 @@ public class CourseVo {
         this.lastOperatorId = lastOperatorId;
     }
 
-    public int getIsDel() {
+    public Integer getIsDel() {
         return isDel;
     }
 
-    public void setIsDel(int isDel) {
+    public void setIsDel(Integer isDel) {
         this.isDel = isDel;
     }
 

@@ -25,5 +25,11 @@ public interface MenuMapper {
 
     // 添加菜单
     void saveMenu(Menu menu);
+
+    // 删除对应的角色菜单关联关系
+    void deleteRoleContextMenuByMenuIds(List<Integer> menuIds);
+
+    // 删除菜单
+    void deleteMenuByMenuIds(List<Integer> menuIds);
 }
 

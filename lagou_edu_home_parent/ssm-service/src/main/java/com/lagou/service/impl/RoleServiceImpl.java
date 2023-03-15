@@ -95,8 +95,10 @@ public class RoleServiceImpl implements RoleService {
             Date date = new Date();
             rr.setCreatedTime(date);
             rr.setUpdatedTime(date);
-            rr.setCreatedBy(user.getName());
-            rr.setUpdatedBy(user.getName());
+//            rr.setCreatedBy(user.getName());
+//            rr.setUpdatedBy(user.getName());
+            rr.setCreatedBy("system");
+            rr.setUpdatedBy("system");
             for (Integer resourceId : list) {
                 rr.setResourceId(resourceId);
                 roleMapper.saveRoleContextResource(rr);
@@ -109,6 +111,7 @@ public class RoleServiceImpl implements RoleService {
 
         role.setUpdatedTime(new Date());
 //        role.setUpdatedBy(user.getName());
+        role.setUpdatedBy("system");
         roleMapper.updateRole(role);
     }
 
@@ -120,6 +123,8 @@ public class RoleServiceImpl implements RoleService {
         role.setUpdatedTime(date);
 //        role.setCreatedBy(user.getName());
 //        role.setUpdatedBy(user.getName());
+        role.setCreatedBy("system");
+        role.setUpdatedBy("system");
         roleMapper.saveRole(role);
     }
 }

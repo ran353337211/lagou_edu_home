@@ -10,6 +10,7 @@ import com.lagou.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -72,5 +73,28 @@ public class MenuServiceImpl implements MenuService {
         menu.setCreatedBy("system");
         menu.setUpdatedBy("system");
         menuMapper.saveMenu(menu);
+    }
+
+    @Override
+    public void deleteMenu(Integer id) {
+
+        // 1.判断是父菜单还是子菜单，若是父菜单则需删除对应的子菜单
+        Menu menu = menuMapper.findMenuById(id);
+        if (null != menu) {
+            // 获取所有父子菜单id
+            List<Integer> menuIds = new ArrayList<>();
+            menuIds.add(menu.getId());
+            if (menu.getParentId() == -1) {
+                // 是父级菜单
+                List<Menu> allMenuByPid = menuMapper.findAllMenuByPid(menu.getId());
+                for (Menu menu1 : allMenuByPid) {
+                    menuIds.add(menu1.getId());
+                }
+            }
+            // 2.删除对应的角色菜单关联关系
+            menuMapper.deleteRoleContextMenuByMenuIds(menuIds);
+            // 3.删除菜单
+            menuMapper.deleteMenuByMenuIds(menuIds);
+        }
     }
 }

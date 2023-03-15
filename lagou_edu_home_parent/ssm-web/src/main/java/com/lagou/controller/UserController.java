@@ -101,9 +101,7 @@ public class UserController {
     public ResponseResult userContextRole(@RequestBody UserVo userVo,HttpServletRequest request) {
 
         // 获取到操作用户的信息
-        HttpSession session = request.getSession();
-        Integer userId = (Integer) session.getAttribute("user_id");
-        User user = userService.findUserById(userId);
+        User user = userService.getUser(request);
         userService.userContextRole(userVo,user);
         return new ResponseResult(true,200,"角色分配成功",null);
     }

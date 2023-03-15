@@ -78,4 +78,20 @@
                                 #{level},#{createdTime},#{updatedTime},#{createdBy},#{updatedBy})
     </insert>
 
+    <!-- 删除对应的角色菜单关联关系 -->
+    <delete id="deleteRoleContextMenuByMenuIds" parameterType="java.util.List">
+        delete from role_menu_relation where
+        <foreach collection="list" item="item" separator="or">
+            menu_id = #{item}
+        </foreach>
+    </delete>
+
+    <!-- 删除菜单 -->
+    <delete id="deleteMenuByMenuIds" parameterType="java.util.List">
+        delete from menu where
+        <foreach collection="list" item="item" separator="or">
+            id = #{item}
+        </foreach>
+    </delete>
+
 </mapper>

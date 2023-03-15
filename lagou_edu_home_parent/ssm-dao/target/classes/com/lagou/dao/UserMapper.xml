@@ -17,7 +17,7 @@
 
     <!-- 修改用户状态 -->
     <update id="updateUserStatus" parameterType="user">
-        update user set status = #{status},update_time = #{update_time} where id = #{id}
+        update user set status = #{status},update_time = #{updateTime} where id = #{id}
     </update>
 
     <!-- 用户登录 -->

@@ -28,4 +28,7 @@ public interface MenuService {
 
     // 添加菜单
     void saveMenu(Menu menu, User user);
+
+    // 删除菜单
+    void deleteMenu(Integer id);
 }
