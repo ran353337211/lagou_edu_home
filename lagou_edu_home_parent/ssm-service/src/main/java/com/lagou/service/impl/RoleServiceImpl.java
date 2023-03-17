@@ -48,10 +48,10 @@ public class RoleServiceImpl implements RoleService {
             rm.setRoleId(roleId);
             rm.setCreatedTime(date);
             rm.setUpdatedTime(date);
-//            rm.setCreatedBy(user.getName());
-//            rm.setUpdatedby(user.getName());
-            rm.setCreatedBy("system");
-            rm.setUpdatedby("system");
+            rm.setCreatedBy(user.getName());
+            rm.setUpdatedby(user.getName());
+//            rm.setCreatedBy("system");
+//            rm.setUpdatedby("system");
             for (Integer mid : list) {
                 rm.setMenuId(mid);
                 roleMapper.roleContextMenu(rm);
@@ -95,10 +95,10 @@ public class RoleServiceImpl implements RoleService {
             Date date = new Date();
             rr.setCreatedTime(date);
             rr.setUpdatedTime(date);
-//            rr.setCreatedBy(user.getName());
-//            rr.setUpdatedBy(user.getName());
-            rr.setCreatedBy("system");
-            rr.setUpdatedBy("system");
+            rr.setCreatedBy(user.getName());
+            rr.setUpdatedBy(user.getName());
+//            rr.setCreatedBy("system");
+//            rr.setUpdatedBy("system");
             for (Integer resourceId : list) {
                 rr.setResourceId(resourceId);
                 roleMapper.saveRoleContextResource(rr);
@@ -110,8 +110,8 @@ public class RoleServiceImpl implements RoleService {
     public void updateRole(Role role,User user) {
 
         role.setUpdatedTime(new Date());
-//        role.setUpdatedBy(user.getName());
-        role.setUpdatedBy("system");
+        role.setUpdatedBy(user.getName());
+//        role.setUpdatedBy("system");
         roleMapper.updateRole(role);
     }
 
@@ -121,10 +121,10 @@ public class RoleServiceImpl implements RoleService {
         Date date = new Date();
         role.setCreatedTime(date);
         role.setUpdatedTime(date);
-//        role.setCreatedBy(user.getName());
-//        role.setUpdatedBy(user.getName());
-        role.setCreatedBy("system");
-        role.setUpdatedBy("system");
+        role.setCreatedBy(user.getName());
+        role.setUpdatedBy(user.getName());
+//        role.setCreatedBy("system");
+//        role.setUpdatedBy("system");
         roleMapper.saveRole(role);
     }
 }

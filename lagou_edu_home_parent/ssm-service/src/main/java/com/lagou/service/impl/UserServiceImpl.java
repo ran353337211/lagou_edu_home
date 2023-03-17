@@ -73,10 +73,10 @@ public class UserServiceImpl implements UserService {
         Date date = new Date();
         ur.setCreatedTime(date);
         ur.setUpdatedTime(date);
-//        ur.setCreatedBy(user.getName());
-//        ur.setUpdatedby(user.getName());
-        ur.setCreatedBy("system");
-        ur.setUpdatedby("system");
+        ur.setCreatedBy(user.getName());
+        ur.setUpdatedby(user.getName());
+//        ur.setCreatedBy("system");
+//        ur.setUpdatedby("system");
         for (Integer roleId : userVo.getRoleIdList()) {
             ur.setRoleId(roleId);
             userMapper.userContextRole(ur);

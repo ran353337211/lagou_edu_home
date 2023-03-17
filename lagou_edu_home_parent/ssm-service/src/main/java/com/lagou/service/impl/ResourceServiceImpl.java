@@ -36,8 +36,8 @@ public class ResourceServiceImpl implements ResourceService {
     public void updateResource(Resource resource, User user) {
 
         resource.setUpdatedTime(new Date());
-//        resource.setUpdatedBy(user.getName());
-        resource.setUpdatedBy("system");
+        resource.setUpdatedBy(user.getName());
+//        resource.setUpdatedBy("system");
         resourceMapper.updateResource(resource);
     }
 
@@ -47,10 +47,10 @@ public class ResourceServiceImpl implements ResourceService {
         Date date = new Date();
         resource.setCreatedTime(date);
         resource.setUpdatedTime(date);
-//        resource.setUpdatedBy(user.getName());
-//        resource.setCreatedBy(user.getName());
-        resource.setCreatedBy("system");
-        resource.setUpdatedBy("system");
+        resource.setUpdatedBy(user.getName());
+        resource.setCreatedBy(user.getName());
+//        resource.setCreatedBy("system");
+//        resource.setUpdatedBy("system");
         resourceMapper.saveResource(resource);
     }
 }

@@ -52,8 +52,8 @@ public class MenuServiceImpl implements MenuService {
             menu.setLevel(1);
         }
         menu.setUpdatedTime(new Date());
-//        menu.setUpdatedBy(user.getName());
-        menu.setUpdatedBy("system");
+        menu.setUpdatedBy(user.getName());
+//        menu.setUpdatedBy("system");
         menuMapper.updateMenu(menu);
     }
 
@@ -68,10 +68,10 @@ public class MenuServiceImpl implements MenuService {
         Date date = new Date();
         menu.setCreatedTime(date);
         menu.setUpdatedTime(date);
-//        menu.setCreatedBy(user.getName());
-//        menu.setUpdatedBy(user.getName());
-        menu.setCreatedBy("system");
-        menu.setUpdatedBy("system");
+        menu.setCreatedBy(user.getName());
+        menu.setUpdatedBy(user.getName());
+//        menu.setCreatedBy("system");
+//        menu.setUpdatedBy("system");
         menuMapper.saveMenu(menu);
     }
 
